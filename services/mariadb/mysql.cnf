@@ -14,7 +14,8 @@ character-set-server    = utf8mb4
 collation-server        = utf8mb4_unicode_ci
 init_connect            = 'SET NAMES utf8mb4'
 
-disable-log-bin
+server-id=1
+log-bin=/var/lib/mysql/mysql-bin
 skip-character-set-client-handshake
 explicit_defaults_for_timestamp
 
