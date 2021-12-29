@@ -343,5 +343,31 @@ services:
 #    networks:
 #      - default
 
+#  jaeger:
+#    image: jaegertracing/all-in-one
+#    environment:
+#      COLLECTOR_ZIPKIN_HOST_PORT: 9412
+#
+#    ports:
+#      - 9412:9412
+#      - 16686:16686
+
+#  postgres:
+#    build:
+#      context: ./services/postgres
+#      args:
+#        - POSTGRES_VERSION=${POSTGRES_VERSION}
+#    volumes:
+#      - ${DATA_DIR}/postgres:/var/lib/postgresql/data
+#      - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+#    ports:
+#      - "${POSTGRES_PORT}:5432"
+#    environment:
+#      - POSTGRES_DB=${POSTGRES_DB}
+#      - POSTGRES_USER=${POSTGRES_USER}
+#      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#    networks:
+#      - default
+
 networks:
   default:
