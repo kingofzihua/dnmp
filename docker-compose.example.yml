@@ -369,5 +369,28 @@ services:
 #    networks:
 #      - default
 
+#  clickhouse:
+#    image: clickhouse/clickhouse-server:${CLICKHOUSE_VERSION}
+#    # WARNING: Exposing the database port will make it accessible from outside the container,
+#    # potentially allowing unauthorized access. If you uncomment the ports below,
+#    # ensure to secure your database (e.g., with strong authentication, proper network rules, and firewalls).
+#    ports:
+#      - "8123:8123" # http api
+#      - "9009:9000" # native
+#    environment:
+#      # default settings
+#      CLICKHOUSE_DB: ${CLICKHOUSE_DB}
+#      CLICKHOUSE_USER: ${CLICKHOUSE_USER}
+#      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
+#      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+#    volumes:
+#      - ${CLICKHOUSE_CONF_FILE}:/etc/clickhouse-server/config.xml
+#      - ${CLICKHOUSE_USER_FILE}:/etc/clickhouse-server/users.xml
+#      - ${DATA_DIR}/clickhouse/ch_data:/var/lib/clickhouse
+#      - ${DATA_DIR}/clickhouse/ch_logs:/var/log/clickhouse-server
+#    restart: on-failure
+#    networks:
+#      - default
+
 networks:
   default:
