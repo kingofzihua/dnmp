@@ -50,6 +50,19 @@ services:
     networks:
       - default
 
+  swoole:
+    build:
+      context: ./services/php74
+      args:
+        PHP_VERSION: php:${SWOOLE_PHP_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${SWOOLE_PHP_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: swoole
+    ports:
+      - "9501:9501"
+      - "9502:9502"
+
 #  php56:
 #    build:
 #      context: ./services/php
