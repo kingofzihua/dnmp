@@ -577,8 +577,8 @@ fi
 
 if [[ -z "${EXTENSIONS##*,swoole,*}" ]]; then
     echo "---------- Install swoole ----------"
-    pecl install swoole
-    docker-php-ext-enable swoole
+
+      installExtensionFromTgz swoole-5.1.1
 fi
 
 if [[ -z "${EXTENSIONS##*,zip,*}" ]]; then

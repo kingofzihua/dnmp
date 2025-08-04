@@ -63,6 +63,44 @@ services:
       - "9501:9501"
       - "9502:9502"
 
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${SWOOLE_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${SWOOLE_PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${SWOOLE_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+
+
+  hyperf30:
+    build:
+      context: ./services/php80
+      args:
+        PHP_VERSION: php:${HYPERF30_PHP_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${HYPERF30_PHP_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: hyperf30
+    ports:
+      - "9521:9501"
+      - "9522:9502"
+
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${HYPERF30_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${HYPERF30_PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${HYPERF30_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+
 #  php56:
 #    build:
 #      context: ./services/php
