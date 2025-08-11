@@ -282,18 +282,21 @@ services:
 #    image: mongo:${MONGODB_VERSION}
 #    container_name: mongodb
 #    environment:
-#        MONGO_INITDB_ROOT_USERNAME: "${MONGODB_INITDB_ROOT_USERNAME}"
-#        MONGO_INITDB_ROOT_PASSWORD: "${MONGODB_INITDB_ROOT_PASSWORD}"
-#        TZ: "$TZ"
+#      MONGO_INITDB_ROOT_USERNAME: "${MONGODB_INITDB_ROOT_USERNAME}"
+#      MONGO_INITDB_ROOT_PASSWORD: "${MONGODB_INITDB_ROOT_PASSWORD}"
+#      wiredTigerCacheSizeGB: 1
+#      TZ: "$TZ"
 #    volumes:
-#      - ${DATA_DIR}/mongo:/data/db:rw
-#      - ${DATA_DIR}/mongo_key:/mongo:rw
+#      - ${DATA_DIR}/mongo/data/db:/data/db:rw
+#      - ${DATA_DIR}/mongo/data/logs:/data/logs:rw
+#      - ${DATA_DIR}/mongo/data/conf:/etc/mongo:rw
+#      - ${DATA_DIR}/mongo/data/backup:/data/backup:rw
 #    ports:
-#       - "${MONGODB_HOST_PORT}:27017"
+#      - "${MONGODB_HOST_PORT}:27017"
 #    networks:
-#       - default
+#      - default
 #    command:
-#       --auth
+#      --auth
 
 #  adminmongo:
 #    image: mrvautin/adminmongo
